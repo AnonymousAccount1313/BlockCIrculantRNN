@@ -29,7 +29,7 @@ python timit_preprocess_main.py \
 --input_path=/xxx/xxx/TIMIT \
 --output_path=/xxx/xxx/timit_preproc \
 --level=phn \
---split=TRAIN
+--split=TEST
 ```
 
 To Train the model, run

@@ -12,8 +12,7 @@ from utils import get_edit_distance
 from utils import load_batched_data
 from tensorflow.python.platform import app
 from tensorflow.python.platform import flags
-flags.DEFINE_string('master', 'local',
-                    """BNS name of the TensorFlow runtime to use.""")
+
 flags.DEFINE_bool('is_training', True, 'set whether to train or test')
 flags.DEFINE_boolean(
     'restore', False,
@@ -102,7 +101,7 @@ def main(_):
     model = DRNN(FLAGS.cell, hparams, FLAGS.is_training)
     train_writer = tf.summary.FileWriter(resultdir + '/train')
     test_writer = tf.summary.FileWriter(resultdir + '/test')
-    with tf.Session(FLAGS.master) as sess:
+    with tf.Session() as sess:
       # restore from stored model
       if FLAGS.restore:
         ckpt = tf.train.get_checkpoint_state(savedir)
